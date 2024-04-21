@@ -27,9 +27,9 @@ export default function Home() {
       <p>The online compressor empowers you to easily optimize your images. Seamlessly convert to WebP or efficiently compress extensive batches to minimize file sizes, all with ease.</p>
       <h2>Tinify CDN</h2>
 
-      <p>Power up your website with Tinify's Image CDN. Harness the power of multiple content delivery networks along with advanced image optimization for unmatched reliability and performance.</p>
-      <p>Tinify CDN makes it easier than ever to speed up your website and optimize your images. Tinify’s automated image optimization does not need any manual fine-tuning. Great results, every time!</p>
-      <p>Tinify CDN is super easy to set up. We’ve made installation guides for the most popular content management systems and frameworks. Browse the list to find a guide for you. We keep adding more!</p>
+      <p>Power up your website with Tinifys Image CDN. Harness the power of multiple content delivery networks along with advanced image optimization for unmatched reliability and performance.</p>
+      <p>Tinify CDN makes it easier than ever to speed up your website and optimize your images. Tinifys automated image optimization does not need any manual fine-tuning. Great results, every time!</p>
+      <p>Tinify CDN is super easy to set up. Weve made installation guides for the most popular content management systems and frameworks. Browse the list to find a guide for you. We keep adding more!</p>
 
       <h2>Developer API</h2>
       <p>Automate your WebP, JPEG and PNG compression workflow</p>

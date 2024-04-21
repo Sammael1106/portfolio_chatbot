@@ -46,7 +46,7 @@ export default function AIChatBox({open, onClose} : AIChatBoxProps) {
 
   useEffect(() => {
     if (open) inputRef.current?.focus();
-  }, [messages])
+  }, [open])
 
   return (
     <div className={classMerge("h-[300px] overflow-y-auto bg-background w-full border flex-col", open ? "border-green-500" : "border-red-500")}

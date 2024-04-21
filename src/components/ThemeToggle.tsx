@@ -3,7 +3,7 @@
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
 
-export default function() {
+export default function ThemeToggle() {
   const {theme, setTheme } = useTheme();
 
   return <button onClick={() => setTheme( theme === 'light' ? 'dark' : 'light')}>
