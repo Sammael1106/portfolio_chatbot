@@ -14,14 +14,7 @@ export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
     const store = await getVectorStore();
-
-    // const { currentMessageContent, chatHistory } = createChatHistory(messages);
-    const chatHistory = messages
-      .slice(0,-1)
-      .map((m: Message) => m.role === "user" ? new HumanMessage(m.content) : new AIMessage(m.content))
-
-    const currentMessageContent = messages[messages.length - 1].content;
-    // console.log(chatHistory, '<<<<<<<<<', currentMessageContent)
+    const { currentMessageContent, chatHistory } = createChatHistory(messages);
     const {stream, handlers} = LangChainStream();
 
     const llm = new ChatOpenAI({
@@ -41,14 +34,6 @@ export async function POST(req: Request) {
       new MessagesPlaceholder("chat_history"),
       ["user", "{input}"]
     ])
-
-    // Simple chain
-    // const chain = prompt.pipe(llm)
-    // const response = chain.invoke({
-    //   input: currentMessageContent,
-    //   context: 'URuru'
-    // })
-
 
     // History retriever
     const historyRetrieverModel = new ChatOpenAI({
@@ -94,11 +79,14 @@ export async function POST(req: Request) {
 }
 
 
-// function createChatHistory(messages: Array<BaseMessage>): { currentMessageContent: string; chatHistory: Array<BaseMessage>} {
-//   const currentMessageContent = messages[messages.length - 1].content;
-//   const chatHistory = [...messages];
+function createChatHistory(messages: Array<Message>): { currentMessageContent: string; chatHistory: Array<HumanMessage | AIMessage>} {
+  const chatHistory = messages
+  .slice(0,-1)
+  .map((m: Message) => m.role === "user" ? new HumanMessage(m.content) : new AIMessage(m.content))
 
-//   return { currentMessageContent, chatHistory };
-// }
+  const currentMessageContent = messages[messages.length - 1].content;
+
+  return { currentMessageContent, chatHistory };
+}
 
 
